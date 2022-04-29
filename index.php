@@ -43,7 +43,7 @@
                 PRIMARY KEY (id)
             );
         ");
-        $query->execute([$username]);
+        $query->execute();
     } catch (\Throwable $th) {
         echo var_dump($th);
         die("Cannot connect to the database");
