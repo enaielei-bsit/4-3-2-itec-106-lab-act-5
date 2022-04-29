@@ -42,9 +42,6 @@
                 middle_name character varying,
                 PRIMARY KEY (id)
             );
-            
-            ALTER TABLE IF EXISTS users
-                OWNER to '?';
         ");
         $query->execute([$username]);
     } catch (\Throwable $th) {
