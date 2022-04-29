@@ -9,10 +9,15 @@
     }
 
     try {
-        $pdo = new PDO(
-            getDSN($_ENV["DBMS"], $_ENV["HOST"], $_ENV["PORT"], $_ENV["DBNAME"]),
-            $_ENV["USERNAME"], $_ENV["PASSWORD"]
-        );
+        try {
+            $pdo = new PDO($_ENV["DATABASE_URL"]);
+        } catch (\Throwable $th) {
+            echo var_dump($th);
+            $pdo = new PDO(
+                getDSN($_ENV["DBMS"], $_ENV["HOST"], $_ENV["PORT"], $_ENV["DBNAME"]),
+                $_ENV["USERNAME"], $_ENV["PASSWORD"]
+            );
+        }
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (\Throwable $th) {
         echo var_dump($th);
