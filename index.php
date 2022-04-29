@@ -9,15 +9,28 @@
     }
 
     try {
+        $dsn = array(
+            "dbms" => $_ENV["DBMS"],
+            "host" => $_ENV["HOST"],
+            "port" => $_ENV["PORT"],
+            "dbname" => $_ENV["DBNAME"]
+        );
+        $username = $_ENV["USERNAME"];
+        $password = $_ENV["PASSWORD"];
+
         try {
-            $pdo = new PDO($_ENV["DATABASE_URL"]);
+            $db = parse_url($_ENV["DATABASE_URL"]);
+            $dsn["dbms"] = "pgsql";
+            $dsn["host"] = $db["host"];
+            $dsn["port"] = $db["port"];
+            $dsn["dbname"] = ltrim($db["path"], "/");
         } catch (\Throwable $th) {
-            echo var_dump($th);
-            $pdo = new PDO(
-                getDSN($_ENV["DBMS"], $_ENV["HOST"], $_ENV["PORT"], $_ENV["DBNAME"]),
-                $_ENV["USERNAME"], $_ENV["PASSWORD"]
-            );
         }
+        
+        $pdo = new PDO(
+            getDSN($dsn["dbms"], $dsn["host"], $dsn["port"], $dsn["dbname"]),
+            $username, $password
+        );
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (\Throwable $th) {
         echo var_dump($th);
