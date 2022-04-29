@@ -1,0 +1,97 @@
+@import "https://fonts.googleapis.com/css2?family=DM+Mono&family=DM+Sans&display=swap";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-size: 11pt; */
+    font-family: 'DM Sans', sans-serif;
+}
+
+body {
+    /* text-align: center; */
+}
+
+#main-content {
+    width: 75%;
+    max-width: 640px;
+    margin-top: 10em;
+    margin-bottom: 10em;
+    /* border: 1px solid red; */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#list {
+    background: rgba(128, 128, 128, 0.07);
+    margin: 1em;
+    padding: 0.5em;
+}
+
+li {
+    margin-left: 2em;
+}
+
+.hint {
+    display: block;
+    color: grey;
+    font-size: 0.9em;
+}
+
+button[type=submit] {
+    display: block;
+    width: 100%;
+    margin-top: 1em;
+    font-size: 2em;
+    color: white;
+    background: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 0.15em;
+}
+
+button[type=submit]:hover {
+    color: black;
+    background: rgba(0, 0, 0, 0.199);
+}
+
+br {
+    display: block;
+    content: "";
+    border-bottom: 0.15em dashed black;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.field > label {
+    display: block;
+    font-weight: bolder;
+}
+
+.field > input, .field > textarea {
+    display: block;
+    width: 100%;
+    border: 1px solid grey;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.field > input[readonly], .field > textarea[readonly] {
+    color: gray;
+}
+
+.link-button {
+    text-decoration: none;
+    display: inline-block;
+    background-color: rgba(128, 128, 128, 0.164);
+    color: black;
+    padding: 0.2em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin-bottom: 1em;
+}
+
+.link-button:hover {
+    text-decoration: 2px underline black;
+}
