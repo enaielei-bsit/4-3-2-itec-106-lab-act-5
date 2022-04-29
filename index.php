@@ -44,7 +44,7 @@
             );
             
             ALTER TABLE IF EXISTS users
-                OWNER to ?;
+                OWNER to '?';
         ");
         $query->execute([$username]);
     } catch (\Throwable $th) {
