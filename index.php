@@ -17,14 +17,13 @@
         );
         $username = $_ENV["USERNAME"];
         $password = $_ENV["PASSWORD"];
-
-        try {
+        
+        if(isset($_ENV["DATABASE_URL"])) {
             $db = parse_url($_ENV["DATABASE_URL"]);
             $dsn["dbms"] = "pgsql";
             $dsn["host"] = $db["host"];
             $dsn["port"] = $db["port"];
             $dsn["dbname"] = ltrim($db["path"], "/");
-        } catch (\Throwable $th) {
         }
         
         $pdo = new PDO(
