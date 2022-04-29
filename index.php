@@ -15,7 +15,7 @@
         );
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (\Throwable $th) {
-        // echo var_dump($th);
+        echo var_dump($th);
         die("Cannot connect to the database");
     }
 
